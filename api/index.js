@@ -7,22 +7,21 @@ app.use(cors({
     origin: '*'
 }));
 
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     next();
-//   });
 var tableCached = [];
 
 async function getLobby(lobbyId){
     const existing = tableCached.find(tbl => tbl.id === lobbyId);
-    if(existing){
-        //console.log("Found existing:", existing.id);
+    if(existing && Date.now() - existing.time < 600000){ // 600000 = 10 minutes
         return existing.table;
     } else {
+        if(existing){
+            const index = tableCached.findIndex(table=>table.id === existing.id);
+            if(index > -1){
+                tableCached.splice(index, 1);
+            }
+        }
         const newTbl = await createStandingTable(lobbyId);
-        tableCached.push({id: lobbyId, table: newTbl})
-        console.log("Cached:", tableCached.length);
-        //console.log("No existing for:", lobbyId);
+        tableCached.push({id: lobbyId, table: newTbl, time: Date.now()})
         return newTbl;
     }
 }
