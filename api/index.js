@@ -11,10 +11,26 @@ app.use(cors({
 //     res.header('Access-Control-Allow-Origin', '*');
 //     next();
 //   });
-var tableCached = await createStandingTable()
+var tableCached = [];
+
+async function getLobby(lobbyId){
+    const existing = tableCached.find(tbl => tbl.id === lobbyId);
+    if(existing){
+        //console.log("Found existing:", existing.id);
+        return existing.table;
+    } else {
+        const newTbl = await createStandingTable(lobbyId);
+        tableCached.push({id: lobbyId, table: newTbl})
+        console.log("Cached:", tableCached.length);
+        //console.log("No existing for:", lobbyId);
+        return newTbl;
+    }
+}
 
 app.get('/createStandingTable', async function (req, res) {
-    res.send(tableCached);
+    const requestedLobbyId = req.query.lobbyId;
+    // console.log(req.query);
+    res.send(await getLobby(requestedLobbyId));
 })
 
 app.listen(8080);

@@ -1,0 +1,58 @@
+{
+    "2022H": [
+        {
+            "id": "2fc4129d-1208-4209-89fb-00d90cef6a91",
+            "displayName": "Div 1",
+            "name": "Div1"
+        },
+        {
+            "id": "9abfec60-75fb-48b5-afcc-a6a103a35b5a",
+            "displayName": "Div 2",
+            "name": "Div2"
+        },
+        {
+            "id": "1220095f-ba0d-422a-9e65-d40e5786c3c2",
+            "displayName": "Div 3A",
+            "name": "Div3A"
+        },
+        {
+            "id": "52252996-32fa-480a-9dbd-807f0df0b99c",
+            "displayName": "Div 3B",
+            "name": "Div3B"
+        },
+        {
+            "id": "e1e86066-330e-4175-8ebd-e08ea449c3fa",
+            "displayName": "Div 3C",
+            "name": "Div3C"
+        },
+        {
+            "id": "8428192e-6ddf-49c6-8de0-ac6c5d5047db",
+            "displayName": "Div 4A",
+            "name": "Div4A"
+        },
+        {
+            "id": "c60c92de-11b3-40a7-bdb8-22109c823828",
+            "displayName": "Div 4B",
+            "name": "Div4B"
+        },
+        {
+            "id": "f1736645-cf37-408c-b20a-ae34faadc404",
+            "displayName": "Div 4C",
+            "name": "Div4C"
+        },
+        {
+            "id": "102ad954-9bb2-4294-bbea-591d7f193f8f",
+            "displayName": "Div 5A",
+            "name": "Div5A"
+        },
+        {
+            "id": "c10784a3-c4e4-4861-8bc5-a4c1d5046c45",
+            "displayName": "Div 5B",
+            "name": "Div5B"
+        }
+        
+
+    ],
+    "2022V": [],
+    "2021H": []
+}
