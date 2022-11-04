@@ -10,6 +10,10 @@ td, th {
   padding: 8px;
 }
 
+.selectedTeam {
+  background-color: #ffa5a5;
+}
+
 tr:nth-child(even) {
   background-color: #dddddd;
 }
@@ -24,8 +28,14 @@ tr:nth-child(even) {
   background-color: rgba(255, 255, 0, 0.3);
 }
 .selectedLobbyButton {
-  background-color: rgb(255, 0, 238);
+  background-color: aqua;
 }
 .lobbyButton {
   margin: 5px;
+}
+.roundButton {
+  margin: 5px;
+}
+.selectedRoundButton {
+  background-color: aqua;
 }
