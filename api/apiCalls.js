@@ -1,20 +1,23 @@
-import fetch from "node-fetch";
+// import { fetch } from "node-fetch";
 const div3AId = '1220095f-ba0d-422a-9e65-d40e5786c3c2';
 
 async function getStandings(id){
     const standingsURL = `https://app.masterblaster.gg/api/scores/standings/${id || div3AId}`;
     return await fetch(standingsURL).catch(err => console.log(err)).then(data => data.json());
 }
-async function getTeamsInfo(id){
+async function fetchTeamsInfo(id){
     const tournamentInfoURL = `https://app.masterblaster.gg/api/Tournament/cached/${id || div3AId}`;
     return await fetch(tournamentInfoURL).catch(err => console.log(err)).then(data => data.json());
 }
-async function getLobbyMatches(id){
+async function fetchLobbyMatches(id){
     const matchesURL = `https://app.masterblaster.gg/api/matches/tournament/${id || div3A}?includeStreamedMatchesOnly=false`;
     return await fetch(matchesURL).catch(err => console.log(err)).then(data => data.json());
 }
-export async function createLobbyMatches(id, teamsInfo){
-    var matches = await getLobbyMatches(id);
+export async function getLobbyMatches(id, teamsInfo){
+    if(!teamsInfo){
+        teamsInfo = await getTeamsInfo(id);
+    }
+    var matches = await fetchLobbyMatches(id);
     matches = matches.matches.map(match => {
         var { matchSeries, teamScores } = match;
         const matchTeamScores = teamScores;
@@ -42,8 +45,8 @@ export async function createLobbyMatches(id, teamsInfo){
     })
     return matches;
 }
-export async function createTeamsInfo(id){
-    var teamsInfo = (await getTeamsInfo(id)).tournamentTeams.map(data => data.team).map(team => {
+export async function getTeamsInfo(id){
+    var teamsInfo = (await fetchTeamsInfo(id)).tournamentTeams.map(data => data.team).map(team => {
         var {id, name, shortHandle, players} = team;
         players = players.map(player => {
             var playerInfo = player.player;
@@ -56,9 +59,10 @@ export async function createTeamsInfo(id){
     });
     return teamsInfo;
 }
-export async function createStandingTable(id, teamsInfo){
-    
-
+export async function getStandingTable(id, teamsInfo){
+    if(!teamsInfo){
+        teamsInfo = await getTeamsInfo(id);
+    }
     const standings = (await getStandings(id)).map(team => {
         var {teamId, points, wins, losses, draws, played, matches } = team;
         matches = matches.map(match => {
@@ -74,3 +78,4 @@ export async function createStandingTable(id, teamsInfo){
     });
     return standings;
 }
+export default { getLobbyMatches, getTeamsInfo, getStandingTable };
