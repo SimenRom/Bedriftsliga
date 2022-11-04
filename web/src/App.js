@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react'
 import DivisionSelector from './components/DivisionSelector';
 import RoundSelector from './components/RoundSelector';
+import TeamSelector from './components/TeamSelector';
 
 function App() {
   var [standings, setStandings] = useState([]);
@@ -86,18 +87,21 @@ function App() {
             <th>Points</th>
             <th>won/lost/draw</th>
             <th>played</th>
-            <th>{selectedTeam && <button onClick={()=>{setSelectedTeam()}}>Deselect highligt</button>}</th>
           </tr>
           {standings?.map(standing => <tr key={standing.teamId} className={standing.teamId === selectedTeam ? 'selectedTeam' : ''}>
             <td>{standing.teamName}</td>
             <td>{standing.points}</td>
             <td><span className="win">{standing.wins}</span> / <span className="lost">{standing.losses}</span> / <span className="draw">{standing.draws}</span></td>
             <td>{standing.played}</td>
-            <td><button onClick={()=>{setSelectedTeam(selectedTeam === standing.teamId ? null : standing.teamId)}}>{selectedTeam === standing.teamId ? 'Deselect highligt' : 'Highligt'}</button></td>
           </tr>)}
         </tbody>
       </table>}
-      {selectedLobby && <RoundSelector rounds={currentSelectedMatches.map(m => m.name.substring(0, 2)).filter((value, index, self) => self.indexOf(value) === index)} selectedRound={selectedRound} setSelectedRound={setSelectedRound}/>}
+      <br/>
+      {selectedLobby && <div>
+          <span>Filter by round and team</span>
+          <RoundSelector rounds={currentSelectedMatches.map(m => m.name.substring(0, 2)).filter((value, index, self) => self.indexOf(value) === index)} selectedRound={selectedRound} setSelectedRound={setSelectedRound}/>
+          <TeamSelector standings={standings} selectedTeam={selectedTeam} setSelectedTeam={setSelectedTeam}/>
+        </div>}
       {selectedLobby && <table>
         <tbody>
             <tr>

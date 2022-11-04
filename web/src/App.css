@@ -11,7 +11,7 @@ td, th {
 }
 
 .selectedTeam {
-  background-color: #ffa5a5;
+  border: solid black 1px;
 }
 
 tr:nth-child(even) {
@@ -38,4 +38,10 @@ tr:nth-child(even) {
 }
 .selectedRoundButton {
   background-color: aqua;
+}
+.teamButton {
+  margin: 5px;
+}
+.selectedTeamButton {
+  background-color: aquamarine;
 }
