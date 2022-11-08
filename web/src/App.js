@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import DivisionSelector from './components/DivisionSelector';
 import RoundSelector from './components/RoundSelector';
 import TeamSelector from './components/TeamSelector';
+import { getLobbyMatches, getStandingTable } from './apiCalls.js';
 
 function App() {
   var [standings, setStandings] = useState([]);
@@ -27,7 +28,7 @@ function App() {
         setStandings(cached.standing);
         return;
       }
-      const tempStanding = await fetch(`/api/GetStandings?lobbyId=${newLobby.id}`).then(data => data.json());
+      const tempStanding = await getStandingTable(newLobby.id); //await fetch(`/api/GetStandings?lobbyId=${newLobby.id}`).then(data => data.json());
 
       setStandings(tempStanding);
       var newCache = cachedStandings;
@@ -51,7 +52,7 @@ function App() {
         setCurrentSelectedMatches(cached.matches);
         return;
       }
-      const tempMatches = await fetch(`/api/GetMatches?lobbyId=${newLobby.id}`).then(data => data.json());
+      const tempMatches = await getLobbyMatches(newLobby.id); //await fetch(`/api/GetMatches?lobbyId=${newLobby.id}`).then(data => data.json());
       setCurrentSelectedMatches(tempMatches);
       var newCache = cachedMatches;
       newCache.push({
@@ -65,8 +66,6 @@ function App() {
   }
   
   async function selectNewLobby(newLobby){
-    const testRes = await fetch('/api/Test').then(data => data.json());
-    console.log('testRes:', testRes);
     setSelectedLobby(newLobby);
     loadStandings(newLobby);
     loadMatches(newLobby); 
