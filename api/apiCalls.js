@@ -1,4 +1,4 @@
-// import { fetch } from "node-fetch";
+import fetch  from "node-fetch";
 const div3AId = '1220095f-ba0d-422a-9e65-d40e5786c3c2';
 
 async function getStandings(id){
@@ -34,7 +34,7 @@ export async function getLobbyMatches(id, teamsInfo){
                 scoreTeam2: matchTeamScores.find(score => score.matchId === series[0].id && score.teamId === teamsFormatted.team2.teamId)?.value || '?',
             },
             match2: {
-                map: series[0]?.displayName || 'No map info',
+                map: series[1]?.displayName || 'No map info',
                 scoreTeam1: matchTeamScores.find(score => score.matchId === series[1].id && score.teamId === teamsFormatted.team1.teamId)?.value || '?',
                 scoreTeam2: matchTeamScores.find(score => score.matchId === series[1].id && score.teamId === teamsFormatted.team2.teamId)?.value || '?',
             }

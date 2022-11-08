@@ -45,3 +45,12 @@ tr:nth-child(even) {
 .selectedTeamButton {
   background-color: aquamarine;
 }
+.mapColumn {
+  display: flex;
+	justify-content: space-between;
+}
+.scoreWrapper {
+  width: 50px;
+  text-align: center;
+  font-weight: bold;
+}
