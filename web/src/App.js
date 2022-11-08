@@ -27,7 +27,7 @@ function App() {
         setStandings(cached.standing);
         return;
       }
-      const tempStanding = await fetch(`http://localhost:7071/api/GetStandings?lobbyId=${newLobby.id}`).then(data => data.json());
+      const tempStanding = await fetch(`/api/GetStandings?lobbyId=${newLobby.id}`).then(data => data.json());
 
       setStandings(tempStanding);
       var newCache = cachedStandings;
@@ -51,7 +51,7 @@ function App() {
         setCurrentSelectedMatches(cached.matches);
         return;
       }
-      const tempMatches = await fetch(`http://localhost:7071/api/GetMatches?lobbyId=${newLobby.id}`).then(data => data.json());
+      const tempMatches = await fetch(`/api/GetMatches?lobbyId=${newLobby.id}`).then(data => data.json());
       setCurrentSelectedMatches(tempMatches);
       var newCache = cachedMatches;
       newCache.push({
