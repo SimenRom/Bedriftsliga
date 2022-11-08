@@ -20,9 +20,15 @@ export async function getLobbyMatches(id, teamsInfo){
     }
     var matches = await fetchLobbyMatchesFromMB(id);
     matches = matches.matches.map(match => {
-        var { matchSeries, teamScores } = match;
-        const matchTeamScores = teamScores;
-        var {name, completedAt, settings, startingAt, startedAt, teams, teamScores, series, playerIds, teamIds, id, hasForfeited, roundIndex } = matchSeries;
+        var matchTeamScores;
+        var matchSeriesTemp;
+        const tempFunc = ()=> {
+            var { matchSeries, teamScores } = match;
+            matchSeriesTemp = matchSeries;
+            matchTeamScores = teamScores;
+        };
+        tempFunc();
+        var {name, completedAt, settings, startingAt, startedAt, teams, teamScores, series, playerIds, teamIds, id, hasForfeited, roundIndex } = matchSeriesTemp;
         
         var teamsFormatted = {
             team1: {...teams[0], name: teamsInfo.find(team => team.id === teams[0].teamId)?.name }, 
@@ -79,4 +85,3 @@ export async function getStandingTable(id, teamsInfo){
     });
     return standings;
 }
-export default { getLobbyMatches, getTeamsInfo, getStandingTable };
