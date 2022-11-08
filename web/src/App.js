@@ -65,6 +65,8 @@ function App() {
   }
   
   async function selectNewLobby(newLobby){
+    const testRes = await fetch('/api/Test').then(data => data.json());
+    console.log('testRes:', testRes);
     setSelectedLobby(newLobby);
     loadStandings(newLobby);
     loadMatches(newLobby); 
