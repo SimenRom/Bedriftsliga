@@ -9,6 +9,6 @@ export default function DivisionSelector({season, selectedLobby, selectNewLobby}
         // console.log(lobbies);
     })
     return <div className='LobbySelectorWrapper'>{lobbies.map(lobby => {
-        return <button className={selectedLobby?.name === lobby.name ? 'lobbyButton selectedLobbyButton' : 'lobbyButton'} key={lobby.name} onClick={()=>{selectNewLobby(lobby)}}>{lobby.displayName}</button>
+        return <button className={selectedLobby?.name === lobby.name ? 'lobbyButton selectedLobbyButton' : 'lobbyButton'} key={lobby.name} onClick={()=>{selectNewLobby(selectedLobby?.id === lobby?.id ? null : lobby)}}>{lobby.displayName}</button>
     })}</div>
 }

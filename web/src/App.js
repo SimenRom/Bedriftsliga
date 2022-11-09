@@ -39,7 +39,7 @@ function App() {
 
   async function loadStandings(newLobby){
     setSelectedTeam();
-    if(!newLobby.id){
+    if(!newLobby?.id){
       setStandings();
       return;
     }
@@ -68,8 +68,8 @@ function App() {
     }
   }
   async function loadMatches(newLobby){
-    if(!newLobby.id){
-      setCurrentSelectedMatches();
+    if(!newLobby?.id){
+      setCurrentSelectedMatches([]);
       return;
     }
     try {
