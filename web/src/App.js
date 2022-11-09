@@ -131,7 +131,7 @@ function App() {
           <RoundSelector rounds={currentSelectedMatches.map(m => m.name.substring(0, 2)).filter((value, index, self) => self.indexOf(value) === index)} selectedRound={selectedRound} setSelectedRound={setSelectedRound}/>
           <TeamSelector standings={standings} selectedTeam={selectedTeam} setSelectedTeam={setSelectedTeam}/>
         </div>}
-      {selectedLobby && <table>
+      {selectedLobby && <div className='matchesTableWrapper'><table className='matchesTable'>
         <tbody>
             <tr>
               {(!selectedRound) && <th>Round</th>}
@@ -158,7 +158,8 @@ function App() {
               <td>{!match.hasForfeited && match.completedAt !== null && <div className="spaceAround"><a href={`https://app.masterblaster.gg/api/matches/cs/demos/download/${match.id}/map/1`}>{match.matchScore.match1.map}</a> - <a href={`https://app.masterblaster.gg/api/matches/cs/demos/download/${match.id}/map/2`}>{match.matchScore.match2.map}</a></div>}</td>
             </tr>)}
         </tbody>
-      </table>}
+      </table>
+      </div>}
       {!selectedLobby && <div className='informationBox'>
         Hei! Eg tar i mot bugs, ideer og tilbakemeldinger på Discord direktemelding: <a href='https://discordapp.com/users/211542559061704705'>Simen#1337</a>.
         <br/>Eg jobber for tiden med å vise meir utdypa statistikk for spillere og lag.

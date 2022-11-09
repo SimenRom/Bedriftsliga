@@ -21,6 +21,19 @@ td, th {
   text-align: left;
   padding: 8px;
 }
+.matchesTableWrapper {
+  overflow-x:auto;
+  width: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .matchesTable {
+    font-size: x-small;
+  }
+  
+  td, th {
+    padding: 7px 4px;
+  }
+}
 button {
   background-color: #05AA85;
   color: white;
