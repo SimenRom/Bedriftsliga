@@ -161,7 +161,7 @@ function App() {
       </table>
       </div>}
       {!selectedLobby && <div className='informationBox'>
-        Hei! Eg tar i mot bugs, ideer og tilbakemeldinger på Discord direktemelding: <a href='https://discordapp.com/users/211542559061704705'>Simen#1337</a>.
+        Hei! Eg tar i mot bugs, ideer og tilbakemeldinger på Discord direktemelding: <a href='https://discordapp.com/users/211542559061704705' onClick={()=>{logEvent(analytics, 'user_clicked_discord_profile')}}>Simen#1337</a>.
         <br/>Eg jobber for tiden med å vise meir utdypa statistikk for spillere og lag, samt bedre støtte for mobil.
         <br/>Dataen er henta fra Masterblaster sitt api 8. november 2022. 
         </div>}
