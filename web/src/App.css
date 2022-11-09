@@ -8,6 +8,7 @@ body, a {
 	justify-content: center;
 	flex-direction: column;
   min-height: 100vh;
+  padding: 20px 0px;
 }
 table {
   font-family: arial, sans-serif;
