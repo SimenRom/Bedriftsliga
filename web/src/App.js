@@ -159,7 +159,11 @@ function App() {
             </tr>)}
         </tbody>
       </table>}
-      
+      {!selectedLobby && <div className='informationBox'>
+        Hei! Eg tar i mot bugs, ideer og tilbakemeldinger på Discord direktemelding: <a href='https://discordapp.com/users/211542559061704705'>Simen#1337</a>.
+        <br/>Eg jobber for tiden med å vise meir utdypa statistikk for spillere og lag.
+        <br/>Dataen er henta fra Masterblaster sitt API 8.november 2022. 
+        </div>}
     </div>  
   );
 }
