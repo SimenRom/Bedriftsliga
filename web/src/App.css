@@ -25,6 +25,9 @@ td, th {
   overflow-x:auto;
   width: 100%;
 }
+.matchesTable {
+  margin: auto;
+}
 @media only screen and (max-width: 600px) {
   .matchesTable {
     font-size: x-small;
