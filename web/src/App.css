@@ -1,3 +1,14 @@
+body, a {
+  background-color: rgb(1, 43, 57);
+  color: white;
+}
+.App {
+  display: flex;
+  align-items: center;
+	justify-content: center;
+	flex-direction: column;
+  min-height: 100vh;
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -5,9 +16,14 @@ table {
 }
 
 td, th {
-  border: 1px solid #9e9e9e;
+  border: 1px solid #3a3a3a;
   text-align: left;
   padding: 8px;
+}
+button {
+  background-color: #05AA85;
+  color: white;
+  padding: 5px 15px;
 }
 
 .selectedTeam {
@@ -15,7 +31,7 @@ td, th {
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #003548;
 }
 
 .win {
@@ -28,7 +44,8 @@ tr:nth-child(even) {
   background-color: rgba(255, 255, 0, 0.3);
 }
 .selectedLobbyButton {
-  background-color: aqua;
+  background-color: #89D578;
+  color: black;
 }
 .lobbyButton {
   margin: 5px;
@@ -37,20 +54,29 @@ tr:nth-child(even) {
   margin: 5px;
 }
 .selectedRoundButton {
-  background-color: aqua;
+  background-color: #89D578;
+  color: black;
 }
 .teamButton {
   margin: 5px;
 }
 .selectedTeamButton {
-  background-color: aquamarine;
+  color: black;
+  background-color: #89D578;
 }
-.mapColumn {
+.spreadContent {
   display: flex;
 	justify-content: space-between;
+}
+.spaceAround {
+  display: flex;
+	justify-content: space-around;
 }
 .scoreWrapper {
   width: 50px;
   text-align: center;
   font-weight: bold;
+}
+.LobbySelectorWrapper {
+  margin-bottom: 20px;
 }
