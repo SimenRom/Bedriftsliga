@@ -114,13 +114,13 @@ function App() {
           <tr>
             <th>Team</th>
             <th>Points</th>
-            <th>W / L / D</th>
+            <th>W / D / L</th>
             <th>played</th>
           </tr>
           {standings?.map(standing => <tr key={standing.teamId} className={standing.teamId === selectedTeam ? 'selectedTeam' : ''}>
             <td>{standing.teamName}</td>
             <td>{standing.points}</td>
-            <td><span className="win">{standing.wins}</span> / <span className="lost">{standing.losses}</span> / <span className="draw">{standing.draws}</span></td>
+            <td><span className="win">{standing.wins}</span> / <span className="draw">{standing.draws}</span> / <span className="lost">{standing.losses}</span></td>
             <td>{standing.played}</td>
           </tr>)}
         </tbody>
