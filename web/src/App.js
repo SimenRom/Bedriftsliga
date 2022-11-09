@@ -4,6 +4,27 @@ import DivisionSelector from './components/DivisionSelector';
 import RoundSelector from './components/RoundSelector';
 import TeamSelector from './components/TeamSelector';
 import { getLobbyMatches, getStandingTable } from './apiCalls.js';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics, logEvent } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDWFcJ6xwGWEkwea8B-71qSDopyf5am35s",
+  authDomain: "bedriftsligascoreboard.firebaseapp.com",
+  projectId: "bedriftsligascoreboard",
+  storageBucket: "bedriftsligascoreboard.appspot.com",
+  messagingSenderId: "824627697886",
+  appId: "1:824627697886:web:e9b004a09187c5f072ca4f",
+  measurementId: "G-R59S8KETE1"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 function App() {
   var [standings, setStandings] = useState([]);
@@ -23,6 +44,11 @@ function App() {
       return;
     }
     try {
+
+      logEvent(analytics, 'user_selected_lobby', {
+        lobbyId: newLobby.id,
+        lobbyName: newLobby.name
+      });
       const cached = cachedStandings.standings.find(l => l.lobbyId === newLobby.id);
       if(cached) {
         setStandings(cached.standing);
@@ -74,8 +100,10 @@ function App() {
 
 
   useEffect(()=>{
-    // console.log(currentSelectedMatches)
-  }, [currentSelectedMatches])
+    logEvent(analytics, 'screen_view', {
+      firebase_screen: 'Landing', 
+    });
+  }, [])
 
   return (
     <div className="App">
